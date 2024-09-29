@@ -5,30 +5,29 @@
 ### 1.1. Dữ liệu
 
 - **Quy tắc đặt tên file dữ liệu:**  
-  `Data_[Tên]_[RAW/PR/EMB]_[Sử dụng cho]`  
+  `[RAW/PR/EMB]_[Tên]_[Sử dụng cho]`  
   Trong đó:
-
   - **RAW**: Dữ liệu nguyên gốc.
-  - **PR**: Dữ liệu đang xử lý.
+  - **PR**: Dữ liệu qua xử lý làm sạch
   - **EMB**: Dữ liệu đã qua quá trình embedding.
   **Ví dụ:**  
-  `Data_APIMDS_RAW_BERT`: Dữ liệu APIMDS nguyên gốc dùng cho BERT.
+  `RAW_APIMDS_BERT`: Dữ liệu APIMDS nguyên gốc dùng cho BERT.
 
 - **Đối với các file dữ liệu không rõ tên:**  
-  `Data_[Tên tượng trưng]_[RAW/PR/EMB]_[Sử dụng cho]`  
-  Hoặc nếu file bị phân tách do dung lượng lớn:  
-  `Data_[Tên tượng trưng]_[chỉ số]_[RAW/PR/EMB]_[Sử dụng cho]`
+  `[RAW/PR/EMB]_[Tên tượng trưng]_[Sử dụng cho]`  
+  Hoặc nếu file bị phân tách do dung lượng lớn:  (gộp lại file .rar đặt tên không có chỉ số)
+  `[RAW/PR/EMB]_[Tên tượng trưng]_[Chỉ số]_[Sử dụng cho]`
   **Ví dụ:**  
-  `Data_FromCuckoo_RAW_BERTSMALL`, `Data_Split_0_PR_BERTBASE`.
+  `RAW_FromCuckoo_BERTSMALL`, `PR_FromCuckoo_0_BERTBASE`.
 
 - **README.md cho dữ liệu:**  
   Mỗi lần upload dữ liệu, vui lòng tạo file `README.md` trong thư mục **Data/** để hướng dẫn cách sử dụng file dữ liệu.  
   **Ví dụ:**  
-  `Data_EMB_GATv2` sử dụng cho file `GATv2.py`. Trong README.md ghi rõ cách chạy file này.
+  `RAW_EMB_GATv2` sử dụng cho file `GATv2.py`. Trong README.md ghi rõ cách chạy file này.
 
 - **Phân loại các file Data vào 3 thư mục riêng tương ứng label của chúng:**
   **Ví dụ:**  
-  `Data_APIMDS_RAW_BERT`: Đưa vào folder "/Data/RAW"
+  `RAW_APIMDS_BERT`: Đưa vào folder "/Data/RAW"
 
 ### 1.2. Model & Embedding
 
@@ -40,6 +39,11 @@
 - **README.md cho Model/Embedding:**  
   Mỗi model hoặc embedding cần có file `README.md` trong thư mục **Model/** hoặc **Embedding/**. Nội dung file này cần giải thích cách chạy, cách thay đổi để sử dụng với dữ liệu khác.
 
+- **Lưu ý**
+  Nếu như các model hoặc embedding có thể tái sử dụng đoạn code lấy dữ liệu, hoặc có thể tối ưu thời gian. Gộp vào thành 1 file và đặt tên thành `Model/Embedding_[Tên đại diện cho thuật toán]`
+  **Ví dụ:**
+  `Model_GNN`
+
 ### 1.3. Code
 
 - **Quy tắc đặt tên hàm và biến:**
@@ -50,9 +54,9 @@
     `createBERT`, `processData`.
 
 - **Comment trong code:**  
-  Vui lòng thêm chú thích (comment) cho mỗi đoạn code riêng biệt, mô tả chức năng của đoạn code đó.  
+  Vui lòng thêm chú thích (comment) cho mỗi đoạn code riêng biệt, mô tả chức năng của đoạn code đó. Đặt theo mẫu `[Vắn tắt].
   **Ví dụ:**  
-  `# Hàm createBERT tạo embedding cho dữ liệu.`
+  `# Hàm createBERT tạo embedding cho dữ liệu`
 
 ### 1.4. Task
 
@@ -60,10 +64,10 @@
   Các task sẽ được quản lý thông qua mục **Issue**.
 
 - **Cách đặt tên Title của Issue:**  
-  `ISSUE_[Tên người nhận]-[Create/Update]-[TASK]`.  
-  Trong đó, **TASK** là đối tượng cần làm.
+  `[Tên người nhận]_[Create/Fix/RemoveF/Feature]_[Data/Model/Embed]_[TASK]`.  
+  Trong đó, **TASK** là đối tượng cần làm, **Create** là tạo mới, **Fix** là sửa lỗi, **RemoveF** là xóa chức năng, hoặc những thứ không cần thiết, **Feature** để thêm chức năng
   **Ví dụ:**  
-  `ISSUE_Trung-Create-BERT`.
+  `Trung_Create_Embed_BERT`, `Trung_Feature_Embed-BERT` -> Trung hãy tạo mô hình embedding BERT nhé , Trung thêm chúc năng cho mô hình embedding BERT nhé
 
 - **Description của Issue:**  
   Ghi rõ chi tiết yêu cầu công việc, hướng dẫn và các thông tin cần thiết. Nếu có deadline, thêm vào cuối phần Description.
@@ -84,15 +88,18 @@
 - **Tên branch:**  
   Đặt tên branch theo Title của Task trong mục Issue (bỏ qua chữ ISSUE) 
   **Ví dụ:**  
-  `Trung-Create-BERT`.
+  `Trung_Create_Embed_BERT`.
 
 ### 3.2. Quy tắc đặt tên commit
 
 - **Tên commit:**  
-  Khi commit, cần thêm message tóm tắt ngắn gọn nội dung.  
+  Khi commit, cần thêm nội dung ngắn gọn diễn đạt đủ ý đã thực hiện.
+  Quy tắc đặt commit: [Động từ] [Đối tượng] [Cho đối tượng khác (nếu có)]
   **Ví dụ:**  
   `Create file APIMDS original for BERT-BASE`.
 
+- **Lưu ý:**
+  Nên commit khi có thay đổi nhỏ, tránh commit khi thay đổi một lượng lớn
 ## 4. Git Tutorial
 
 ### 4.1. Các bước trước khi push code lên GitHub
@@ -115,7 +122,10 @@
 ```plaintext
 G3tm31fy0uc4n/
   ├── Data/
-  │   └── README.md
+  │   ├── README.md
+  │   ├── RAW
+  │   ├── PR
+  │   └── EMB
   ├── Embedding/
   │   └── README.md
   ├── Models/
