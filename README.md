@@ -4,9 +4,9 @@
 
 ### Dữ liệu
 
-- Quy tắc đặt tên file dữ liệu: [Tên]_[ORI/EMBEDED]_[Dùng cho] (ORI là file gốc, chưa thông qua embedding)
-  VD: APIMDS_ORI_BERT
-- Đối với các file dữ liệu không rõ tên: [Tên tượng trưng]_[ORI/EMBEDED]_[Dùng cho] / [Tên tượng trưng]_[chỉ số]_[ORI/EMBEDED]\_[Dùng cho] (Đối với các file bị phân tách do lưu lượng quá lớn,...)
+- Quy tắc đặt tên file dữ liệu: [Tên]_[RAW/PR/EMB]_[Dùng cho] (RAW nguyên gốc, PR đang xử lý, EMB đã qua embedding)
+  VD: APIMDS_RAW_BERT
+- Đối với các file dữ liệu không rõ tên: [Tên tượng trưng]_[RAW/PR/EMB]_[Dùng cho] / [Tên tượng trưng]_[chỉ số]_[RAW/PR/EMB]\_[Dùng cho] (Đối với các file bị phân tách do lưu lượng quá lớn,...)
   VD: Data_ORI_BERTSMALL, DataSplit0_BERTBASE,...
 - Các file khi được upload lên vui lòng kèm theo phần hướng dẫn sử dụng trong file "README.md" trong folder "Data" .
   VD: Data_EMBEDED_GATv2 sử dụng cho file GATv2.py -> Chạy như thế nào,...
@@ -14,15 +14,28 @@
 ### Model & Embedding
 
 - Quy tắc đặt tên: [Tên Model/Embedding]
-- Viết file "README.md" trong folder "Model/Embedding" giải thích cách chạy ra sao.
+- Viết file "README.md" trong folder "Model/Embedding" giải thích cách chạy ra sao, sửa những gì nếu muốn chạy một file dữ liệu khác.
+
+### Code
+
+- Đối với tên hàm, tên biến:
+  - Đặt tên theo [Động từ][Something], động từ sẽ ghi thường, Something ghi hoa chữ cái đầu (Ghi hoa hết nếu đó là một cụm)
+    VD: createBERT, processData
+- Vui lòng thêm comment trên mỗi đoạn code riêng biệt
+    VD: Hàm createBERT để làm tạo embedding
+
+### Task
+
+- Các task sẽ được đặt tên theo cách sau: [Tên người nhận]-[Create/Updated]-[TASK]
+    VD: Trung-Create-BERT
 
 ## Lưu ý: File dữ liệu vui lòng nén thành .rar sau đó mới up lên, mật khẩu vui lòng đặt theo tin nhắn đã bàn trước (Unsolve)
 
 ## Git rule
 
 - Quy tắc đặt tên branch:
-  - Tên branch nên bắt đầu bằng từ "create/" hoặc "fix/" tương ứng với tạo hoặc sửa, sau "/" là tạo hoặc sửa tên của tệp tin tương ứng muốn làm gì với file đó, cuối cùng thêm "-[tên mình]".
-    VD: Tạo file data.rar chứa dữ liệu: create/data-Trung; fix/bert-Trung
+  - Tên branch đặt tên bằng tên task
+    VD: Trung-Create-BERT
 - Quy tắc tên commit:
   - Khi commit, vui lòng gửi message tóm tắt ngắn gọn những gì đã push lên.
     VD: Create file APIMDS original for BERT-BASE
@@ -46,9 +59,9 @@
 - **G3tm31fy0uc4n/**
   - **Data/**
     - README.md
-  - **Embedding/**
+  - **data/**
     - README.md
-  - **Model/**
+  - **models/**
     - models.md
   - README.md
   - requirements.txt
