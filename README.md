@@ -71,11 +71,6 @@
 - **Assign task:**  
   Vui lòng assign task cho người thực hiện trong Issue.
 
-### 1.5. Folder
-- **Khi có mong muốn tạo ra folder mới, vui lòng đặt tên theo quy tắc sau:** 
-  ``.  
-  Trong đó, **TASK** là đối tượng cần làm.
-
 
 ## 2. Lưu ý về dữ liệu
 
