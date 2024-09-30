@@ -7,15 +7,16 @@
 - **Quy tắc đặt tên file dữ liệu:**  
   `[RAW/PR/EMB]_[Tên]_[Sử dụng cho]`  
   Trong đó:
+
   - **RAW**: Dữ liệu nguyên gốc.
   - **PR**: Dữ liệu qua xử lý làm sạch
   - **EMB**: Dữ liệu đã qua quá trình embedding.
-  **Ví dụ:**  
-  `RAW_APIMDS_BERT`: Dữ liệu APIMDS nguyên gốc dùng cho BERT.
+    **Ví dụ:**  
+    `RAW_APIMDS_BERT`: Dữ liệu APIMDS nguyên gốc dùng cho BERT.
 
 - **Đối với các file dữ liệu không rõ tên:**  
   `[RAW/PR/EMB]_[Tên tượng trưng]_[Sử dụng cho]`  
-  Hoặc nếu file bị phân tách do dung lượng lớn:  (gộp lại file .rar đặt tên không có chỉ số)
+  Hoặc nếu file bị phân tách do dung lượng lớn: (gộp lại file .rar đặt tên không có chỉ số)
   `[RAW/PR/EMB]_[Tên tượng trưng]_[Chỉ số]_[Sử dụng cho]`
   **Ví dụ:**  
   `RAW_FromCuckoo_BERTSMALL`, `PR_FromCuckoo_0_BERTBASE`.
@@ -54,27 +55,17 @@
     `createBERT`, `processData`.
 
 - **Comment trong code:**  
-  Vui lòng thêm chú thích (comment) cho mỗi đoạn code riêng biệt, mô tả chức năng của đoạn code đó. Đặt theo mẫu `[Vắn tắt].
+   Vui lòng thêm chú thích (comment) cho mỗi đoạn code riêng biệt, mô tả chức năng của đoạn code đó. Đặt theo mẫu `[Vắn tắt].
   **Ví dụ:**  
-  `# Hàm createBERT tạo embedding cho dữ liệu`
+`# Hàm createBERT tạo embedding cho dữ liệu`
 
 ### 1.4. Task
 
-- **Quản lý task bằng Issue:**  
-  Các task sẽ được quản lý thông qua mục **Issue**.
-
-- **Cách đặt tên Title của Issue:**  
-  `[Tên người nhận]_[Create/Fix/RemoveF/Feature]_[Data/Model/Embed]_[TASK]`.  
-  Trong đó, **TASK** là đối tượng cần làm, **Create** là tạo mới, **Fix** là sửa lỗi, **RemoveF** là xóa chức năng, hoặc những thứ không cần thiết, **Feature** để thêm chức năng
+- **Cách đặt tên Task:**  
+  `[Tên người nhận]_[Create/Fix/RemoveF/Feature]_[Vắn tắt muốn làm gì với các tùy chọn [FIX/REMOVEF/FEATURE]_[Data/Model/Embed]_[TASK]`.  
+  Trong đó, **TASK** là đối tượng cần làm, **Create** là tạo mới, **Fix** là sửa lỗi, **RemoveF** là xóa chức năng, hoặc những thứ không cần thiết, **Feature** để thêm chức năng, các vắn tắt có thể là hàm trong code.
   **Ví dụ:**  
-  `Trung_Create_Embed_BERT`, `Trung_Feature_Embed-BERT` -> Trung hãy tạo mô hình embedding BERT nhé , Trung thêm chúc năng cho mô hình embedding BERT nhé
-
-- **Description của Issue:**  
-  Ghi rõ chi tiết yêu cầu công việc, hướng dẫn và các thông tin cần thiết. Nếu có deadline, thêm vào cuối phần Description.
-
-- **Assign task:**  
-  Vui lòng assign task cho người thực hiện trong Issue.
-
+  `Trung_Create_Embed_BERT`, `Trung_Feature_512Dimension_Embed_BERT` -> Trung hãy tạo mô hình embedding BERT nhé , Trung thêm chúc năng cho mô hình embedding BERT tạo ra vector 512 chiều nhé
 
 ## 2. Lưu ý về dữ liệu
 
@@ -86,9 +77,9 @@
 ### 3.1. Quy tắc đặt tên branch
 
 - **Tên branch:**  
-  Đặt tên branch theo Title của Task trong mục Issue (bỏ qua chữ ISSUE) 
+  Đặt tên branch theo TASK
   **Ví dụ:**  
-  `Trung_Create_Embed_BERT`.
+  `Trung_Create_Embed_BERT`, `Trung_Fix_512Dimension_Embed_BERT`
 
 ### 3.2. Quy tắc đặt tên commit
 
@@ -100,6 +91,7 @@
 
 - **Lưu ý:**
   Nên commit khi có thay đổi nhỏ, tránh commit khi thay đổi một lượng lớn
+
 ## 4. Git Tutorial
 
 ### 4.1. Các bước trước khi push code lên GitHub
